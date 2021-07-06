@@ -1,5 +1,6 @@
 package com.examp.project2
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         flipTab.setLeftTabText("customer")
         flipTab.setRightTabText("employ")
 
+
 //Sets color for both text, background & border
         flipTab.setOverallColor(Color.BLUE)
 //Sets color only bg & border
@@ -62,5 +64,9 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+
+        main.loginbutton.setOnClickListener {
+            startActivity( Intent(this,homepage::class.java))
+        }
     }
 }

@@ -9,6 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Project2">
+        <activity android:name=".requestpage"></activity>
+        <activity android:name=".empolys" />
+        <activity
+            android:name=".homepage"
+            android:label="@string/title_activity_homepage"
+            android:theme="@style/Theme.Project2.NoActionBar" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
