@@ -18,55 +18,59 @@ class MainActivity : AppCompatActivity() {
         setContentView(main.root)
         supportActionBar?.hide()
 
+        main.eRagitetionbutton.setOnClickListener {
+            startActivity(Intent(this,homepage::class.java))
+
+        }
+
         main.loginbutton.setOnClickListener(View.OnClickListener {
+            startActivity(Intent(this,homepage::class.java))
 
         })
+
         main.lreg.setOnClickListener(View.OnClickListener {
 
             main.layoutlog.visibility = View.GONE
-            main.customerReg.visibility = View.VISIBLE
+            main.regParentLayout.visibility = View.VISIBLE
+            main.customerReg.visibility=View.VISIBLE
             Toast.makeText(this, "click on loging reg page", Toast.LENGTH_LONG).show()
 
         })
-
-        val flipTab = FlipTab(this)
-        flipTab.setLeftTabText("customer")
-        flipTab.setRightTabText("employ")
-
-
-//Sets color for both text, background & border
-        flipTab.setOverallColor(Color.BLUE)
-//Sets color only bg & border
-        flipTab.setHighlightColor(Color.GREEN)
-//Sets color only for text
-        flipTab.setTextColor(Color.GREEN)
-
-        flipTab.setTabSelectedListener(object: FlipTab.TabSelectedListener {
+        main.fliptab.setTabSelectedListener(object: FlipTab.TabSelectedListener {
             override fun onTabSelected(isLeftTab: Boolean, tabTextValue: String) {
                 if (isLeftTab) {
-
                     main.customerReg.visibility = View.VISIBLE
                     main.empolyReg.visibility = View.GONE
                 }
                 else{
                     main.empolyReg.visibility = View.VISIBLE
                     main.customerReg.visibility = View.GONE
-
                 }
 
 
             }
 
             override fun onTabReselected(isLeftTab: Boolean, tabTextValue: String) {
-
-
-                Toast.makeText(this@MainActivity, (if (isLeftTab) "Left" else "Right") + " tab reselected", Toast.LENGTH_SHORT).show()
+                if (isLeftTab) {
+                    main.customerReg.visibility = View.VISIBLE
+                    main.empolyReg.visibility = View.GONE
+                }
+                else{
+                    main.empolyReg.visibility = View.VISIBLE
+                    main.customerReg.visibility = View.GONE
+                }
             }
 
         })
 
-        main.loginbutton.setOnClickListener {
-            startActivity( Intent(this,homepage::class.java))
-        }
+
+    }
+
+    override fun onBackPressed() {
+
+        main.layoutlog.visibility = View.VISIBLE
+        main.regParentLayout.visibility = View.GONE
+        main.customerReg.visibility=View.GONE
+
     }
 }
